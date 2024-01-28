@@ -47,7 +47,7 @@ namespace UC_ARCV
 		{
 			return Regex.IsMatch(input, "[^a-zA-Z0-9]");
 		}
-		public void ReadFile(string path,string fiderpath)
+		public void ReadFile(string path,string folderpath)
 		{
 			var file = ReadFileHeader(path);
 			BinaryReader br = new(new FileStream(path, FileMode.Open));
@@ -62,8 +62,8 @@ namespace UC_ARCV
 				{
 					name = "data";
 				}
-				Console.WriteLine("file {1}.{0} has finish",name,i);
-				BinaryWriter bw = new(new FileStream(fiderpath + "//" + Convert.ToString(i) + @"." + name, FileMode.Create));
+				Console.WriteLine("file {1}.{0} has finish. offest: {3} size: {4} crc: {2}", name, i, file.Offest_crc[i], file.Offest[i], file.Offest_size[i]);
+				BinaryWriter bw = new(new FileStream(folderpath + "//" + Convert.ToString(i) + @"." + name, FileMode.Create));
 				bw.Write(data);
 				bw.Close();
             }
