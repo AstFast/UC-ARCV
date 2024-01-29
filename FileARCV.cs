@@ -28,7 +28,6 @@ notice:
 		Program author:冬日-春上(@AstFast)
 		&2024-1-28
 				";
-
 			if (args.Length < 2)
 			{
 				Console.WriteLine(content);

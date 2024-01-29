@@ -25,8 +25,11 @@ namespace UC_ARCV
 			bw.Write(0);
 			uint offest = 12;
 			uint offest_file = (uint)(12 + files.Length * 12);
+			const byte Uyten = 0xAC;
+			
 			foreach (string filepath in files)
 			{
+				byte Uyten1 = 0;
 				BinaryReader br = new(new FileStream(filepath, FileMode.Open));
 				byte[] data = new byte[(int)br.BaseStream.Length];
 				data = br.ReadBytes((int)br.BaseStream.Length);
@@ -38,8 +41,20 @@ namespace UC_ARCV
 				bw.Write(crc);
 				bw.BaseStream.Position = offest_file;
 				bw.Write(data);
+                while (true)
+                {
+					if (bw.BaseStream.Position % 4 == 0)
+					{
+						break;
+					}
+					else
+					{
+						bw.Write(Uyten);
+						Uyten1++;
+					}
+				}
 				offest += 12;
-				offest_file += (uint)info.Length;
+				offest_file += (uint)(info.Length + Uyten1);
 				br.Close();
 				Console.WriteLine("{0} has finish in file offest: {1} size: {2} crc: {3}",info.Name, offest_file, info.Length,crc);
 			}
