@@ -28,7 +28,7 @@ Initial submission
 2024/1/29 1.0.1:
 Try packaging
 2024/1/29 1.0.2:
-
+Solve the problem of 4-byte pairing
 ```
 
 #### Compile Tool
@@ -39,6 +39,10 @@ VisualStudio2022
 
 [SharpZipLib](https://github.com/icsharpcode/SharpZipLib)
 
-#### Problem
+#### Problem:
 
 There is currently no confusion algorithm available
+
+#### Author:
+
+冬日-春上(@AstFast)
