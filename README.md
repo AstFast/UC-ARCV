@@ -27,6 +27,8 @@ This project is used to unpack/pack ARCV files
 Initial submission
 2024/1/29 1.0.1:
 Try packaging
+2024/1/29 1.0.2:
+
 ```
 
 #### Compile Tool
@@ -37,6 +39,6 @@ VisualStudio2022
 
 [SharpZipLib](https://github.com/icsharpcode/SharpZipLib)
 
-#### Problem:
+#### Problem
 
-There is currently a defect in the packaging due to an issue with unpacking (the solution is currently unknown)
+There is currently no confusion algorithm available
