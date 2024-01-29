@@ -36,3 +36,7 @@ VisualStudio2022
 #### Dependent environment(**NuGet**)
 
 [SharpZipLib](https://github.com/icsharpcode/SharpZipLib)
+
+#### Attention:
+
+There is currently a defect in the packaging due to an issue with unpacking (the solution is currently unknown)
