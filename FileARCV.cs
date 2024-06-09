@@ -1,4 +1,6 @@
-﻿namespace UC_ARCV
+﻿using System.IO;
+
+namespace UC_ARCV
 {
 	internal class FileARCV
 	{
@@ -18,6 +20,8 @@ notice:
 	mode:
 		-decode:
 			file path:The file path that needs to be unpacked(*.bin/*.arcv)
+			*v1.0.3 allow filepath is folder(Batch processing),
+			 But still unable to recognize the file, will exit when encountering an error file
 			folder path:A folder for storing extracted files
 		-encode:
 			file path:Files used for output (generating arcv files)
@@ -36,6 +40,17 @@ notice:
 			switch(args[0])
 			{
 				case "-decode":
+					if (Directory.Exists(args[1]))
+					{
+						string[] files = Directory.GetFiles(args[1], "*.*", SearchOption.AllDirectories);
+                        foreach (var item in files)
+                        {
+							string apath = args[2] +"\\"+Path.GetFileNameWithoutExtension(item);
+							_ = Directory.CreateDirectory(apath);
+							UnFile(item,apath);
+						}
+                        break;
+					}
 					UnFile(args[1], args[2]);
 					break;
 				case "-encode":
