@@ -29,17 +29,15 @@ Initial submission
 Try packaging
 2024/1/29 1.0.2:
 Solve the problem of 4-byte pairing
-2024/6/9 1.0.3:
-
+2024/6/9 1.0.4:
+Reorganize code
+CRC uncertain (tentatively CRC32)
+Release will not output to the console, only throw error
 ```
 
 #### Compile Tool
 
 VisualStudio2022
-
-#### Dependent environment(**NuGet**)
-
-[SharpZipLib](https://github.com/icsharpcode/SharpZipLib)
 
 #### Problem:
 
