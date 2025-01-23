@@ -1,17 +1,11 @@
 ﻿using System.IO;
+using UC_ARCV.Decode;
+using UC_ARCV.Encode;
 
 namespace UC_ARCV
 {
 	internal class FileARCV
 	{
-		static void UnFile(string path, string folderpath)
-		{
-			new DecodeFile().ReadFile(path, folderpath);
-		}
-		static void InFile(string outpath, string folderpath)
-		{
-			new EncodeFile().EnFile(outpath,folderpath);
-		}
 		static void Main(string[] args)
 		{
 			string content = @"
@@ -30,9 +24,9 @@ notice:
 		There is currently no inspection function available
 		This program currently does not have the ability to recognize files
 		Program author:冬日-春上(@AstFast)
-		&2024-1-28
+		&2025-1-23
 				";
-			if (args.Length < 2)
+			if (args.Length != 3)
 			{
 				Console.WriteLine(content);
 				return;
@@ -47,14 +41,17 @@ notice:
                         {
 							string apath = args[2] +"\\"+Path.GetFileNameWithoutExtension(item);
 							_ = Directory.CreateDirectory(apath);
-							UnFile(item,apath);
+							var file3 = new DecodeARCV(item);
+							file3.OutInFile(apath);
 						}
                         break;
 					}
-					UnFile(args[1], args[2]);
+					var file1 = new DecodeARCV(args[1]);
+					file1.OutInFile(args[2]);
 					break;
 				case "-encode":
-					InFile(args[1], args[2]);
+					var file2 = new EncodeARCV(args[2]);
+					file2.OutEncodeFile(args[1]);
 					break;
 				default:
 					Console.WriteLine(content);
